@@ -23,5 +23,5 @@ Este proyecto es un componente web que muestra comentarios de clientes en un car
 
 Para usar este carrusel solo necesitas incluir el bloque HTML, CSS y JavaScript que hay en este proyecto en tu página web.
 
-```html
+
 
