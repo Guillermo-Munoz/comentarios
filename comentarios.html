@@ -170,3 +170,31 @@
         track.appendChild(div);
     });
 
+
+ // Auto scroll infinito
+    let currentIndex = 0;
+    const itemCount = allItems.length;
+    const visibleItems = getVisibleItems();
+    const scrollSpeed = 3000;
+
+    function nextScroll() {
+        currentIndex++;
+        if (currentIndex >= itemCount) {
+            // Reset instantáneo sin animación
+            track.style.transition = "none";
+            track.style.transform = `translateX(0px)`;
+            currentIndex = 1;
+
+            // Forzar reflow antes de aplicar transición de nuevo
+            void track.offsetWidth;
+        }
+
+        const offset = -(currentIndex * (100 / visibleItems));
+        track.style.transition = "transform 0.6s ease-in-out";
+        track.style.transform = `translateX(${offset}%)`;
+    }
+    function getVisibleItems() {
+        return window.innerWidth <= 768 ? 1 : 3; // 1 para móvil, 3 para escritorio
+    }
+    setInterval(nextScroll, scrollSpeed);
+</script>
